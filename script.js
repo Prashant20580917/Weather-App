@@ -1,8 +1,8 @@
 let weather = {
   apiKey: "fd680a4b1b783e9f27e4177aeb18d1fa",
   imageMapping: {
-    Gedling: "https://images.pexels.com/photos/1257860/pexels-photo-1257860.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    // Add more city-image mappings here
+    // Gedling: "https://images.pexels.com/photos/1257860/pexels-photo-1257860.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    // // Add more city-image mappings here
   },
   fetchWeather: function (city) {
     // Fetch current weather data from API
@@ -21,10 +21,10 @@ let weather = {
       })
       .then((data) => {
         this.displayWeather(data);
-        if (city === "Gedling") {
+        
           this.fetch7DayForecast(city); // Fetch 7-day forecast data for Gedling
         }
-      });
+      );
 
     // Fetch forecast data from your PHP script
     this.fetchForecastDataFromDB(city);
@@ -49,13 +49,13 @@ let weather = {
     document.querySelector(".forecast-title").innerText =
       "Weather Update  of " + name;
 
-    const backgroundImageUrl = this.imageMapping[name];
-    if (backgroundImageUrl) {
-      document.body.style.backgroundImage = "url('" + backgroundImageUrl + "')";
-    } else {
-      document.body.style.backgroundImage =
-        "url('https://source.unsplash.com/1600x900/?" + name + "')";
-    }
+    // const backgroundImageUrl = this.imageMapping[name];
+    // if (backgroundImageUrl) {
+    //   document.body.style.backgroundImage = "url('" + backgroundImageUrl + "')";
+    // } else {
+    //   document.body.style.backgroundImage =
+    //     "url('https://source.unsplash.com/1600x900/?" + name + "')";
+    // }
   },
   fetch7DayForecast: function (city) {
     fetch(
@@ -233,12 +233,12 @@ function displayWeather(data) {
   document.querySelector(".weather").classList.remove("loading");
 
   
-  const backgroundImageUrl = weather.imageMapping[name];
-  if (backgroundImageUrl) {
-    document.body.style.backgroundImage = "url('" + backgroundImageUrl + "')";
-  } else {
-    document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + name + "')";
-  }
+  // const backgroundImageUrl = weather.imageMapping[name];
+  // if (backgroundImageUrl) {
+  //   document.body.style.backgroundImage = "url('" + backgroundImageUrl + "')";
+  // } else {
+  //   document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + name + "')";
+  // }
 }
 
 // Function to load weather data from local storage and display it
